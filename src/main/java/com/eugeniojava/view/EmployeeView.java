@@ -1,11 +1,10 @@
 package main.java.com.eugeniojava.view;
 
-import javax.swing.JFrame;
 import main.java.com.eugeniojava.dao.GenericDao;
 import main.java.com.eugeniojava.model.Employee;
+import javax.swing.JFrame;
 
 public class EmployeeView extends GenericView<Employee> {
-
     public EmployeeView(JFrame parent, GenericDao<Employee> dao) {
         super(parent, dao);
     }

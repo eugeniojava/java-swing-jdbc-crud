@@ -1,13 +1,12 @@
 package main.java.com.eugeniojava.dao.impl;
 
+import main.java.com.eugeniojava.dao.GenericDao;
+import main.java.com.eugeniojava.model.Customer;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import main.java.com.eugeniojava.dao.GenericDao;
-import main.java.com.eugeniojava.model.Customer;
 
 public class CustomerDaoImpl extends GenericDao<Customer> {
-
     @Override
     protected String getTableName() {
         return "customers";

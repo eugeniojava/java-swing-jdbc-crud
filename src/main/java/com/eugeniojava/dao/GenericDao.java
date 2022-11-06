@@ -1,17 +1,16 @@
 package main.java.com.eugeniojava.dao;
 
+import main.java.com.eugeniojava.util.DatabaseConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import main.java.com.eugeniojava.util.DatabaseConnection;
 
 import static java.util.Collections.emptyList;
 
 public abstract class GenericDao<T> {
-
     protected static DatabaseConnection databaseConnection;
 
     static {

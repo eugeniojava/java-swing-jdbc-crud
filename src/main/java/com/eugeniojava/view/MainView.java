@@ -1,15 +1,14 @@
 package main.java.com.eugeniojava.view;
 
-import java.awt.event.ActionEvent;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import main.java.com.eugeniojava.dao.impl.CustomerDaoImpl;
 import main.java.com.eugeniojava.dao.impl.EmployeeDaoImpl;
 import main.java.com.eugeniojava.dao.impl.ProductDaoImpl;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import java.awt.event.ActionEvent;
 
 public class MainView extends JFrame {
-
     private static final String TITLE = "Store management system";
 
     public MainView() {

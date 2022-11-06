@@ -1,11 +1,10 @@
 package main.java.com.eugeniojava.view;
 
-import javax.swing.JFrame;
 import main.java.com.eugeniojava.dao.GenericDao;
 import main.java.com.eugeniojava.model.Customer;
+import javax.swing.JFrame;
 
 public class CustomerFormView extends GenericFormView<Customer> {
-
     public CustomerFormView(JFrame parent, GenericDao<Customer> dao, GenericView<Customer> view, String action,
                             Customer customer) {
         super(parent, dao, view, action, customer);

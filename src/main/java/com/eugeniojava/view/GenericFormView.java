@@ -1,18 +1,17 @@
 package main.java.com.eugeniojava.view;
 
-import java.awt.event.ActionEvent;
+import main.java.com.eugeniojava.dao.GenericDao;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import main.java.com.eugeniojava.dao.GenericDao;
+import java.awt.event.ActionEvent;
 
 import static javax.swing.JOptionPane.ERROR_MESSAGE;
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 import static javax.swing.JOptionPane.showMessageDialog;
 
 public abstract class GenericFormView<T> extends JFrame {
-
     public static final String ACTION_CREATE = "Create";
     public static final String ACTION_UPDATE = "Update";
     protected final String action;

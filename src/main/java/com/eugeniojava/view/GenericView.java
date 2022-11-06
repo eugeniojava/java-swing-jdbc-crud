@@ -1,22 +1,21 @@
 package main.java.com.eugeniojava.view;
 
-import java.awt.event.ActionEvent;
-import java.util.ArrayList;
-import java.util.List;
+import main.java.com.eugeniojava.dao.GenericDao;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JTextField;
-import main.java.com.eugeniojava.dao.GenericDao;
+import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 import static javax.swing.JOptionPane.ERROR_MESSAGE;
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 import static javax.swing.JOptionPane.showMessageDialog;
 
 public abstract class GenericView<T> extends JFrame {
-
     public static final String DIALOG_TITLE_SUCCESS = "Success";
     public static final String DIALOG_TITLE_ERROR = "Error";
     protected final String dialogMessageErrorUnselected;

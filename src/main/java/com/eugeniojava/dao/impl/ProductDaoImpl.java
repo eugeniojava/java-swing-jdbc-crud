@@ -1,13 +1,12 @@
 package main.java.com.eugeniojava.dao.impl;
 
+import main.java.com.eugeniojava.dao.GenericDao;
+import main.java.com.eugeniojava.model.Product;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import main.java.com.eugeniojava.dao.GenericDao;
-import main.java.com.eugeniojava.model.Product;
 
 public class ProductDaoImpl extends GenericDao<Product> {
-
     @Override
     protected String getTableName() {
         return "products";

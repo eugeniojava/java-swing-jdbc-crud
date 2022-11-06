@@ -1,11 +1,10 @@
 package main.java.com.eugeniojava.view;
 
-import javax.swing.JFrame;
 import main.java.com.eugeniojava.dao.GenericDao;
 import main.java.com.eugeniojava.model.Product;
+import javax.swing.JFrame;
 
 public class ProductView extends GenericView<Product> {
-
     public ProductView(JFrame parent, GenericDao<Product> dao) {
         super(parent, dao);
     }
