@@ -29,7 +29,6 @@ public abstract class GenericFormView<T> extends JFrame {
         setLayout(null);
         setLocationRelativeTo(parent);
         setResizable(false);
-
         viewTitle = getModelNameCapitalized() + " form";
         setTitle(viewTitle);
         this.dao = dao;
@@ -37,7 +36,6 @@ public abstract class GenericFormView<T> extends JFrame {
         this.action = action;
         this.t = t;
         initComponents();
-
         setVisible(true);
     }
 
@@ -55,38 +53,32 @@ public abstract class GenericFormView<T> extends JFrame {
         JLabel jLabelTitle = new JLabel(action + " form");
         jLabelTitle.setBounds(120, 10, 200, 30);
         add(jLabelTitle);
-
         JLabel jLabelOne = new JLabel(getFieldNameOneCapitalized() + ":");
         jLabelOne.setBounds(10, 40, 100, 30);
         add(jLabelOne);
         jTextFieldOne = new JTextField();
         jTextFieldOne.setBounds(110, 40, 200, 30);
         add(jTextFieldOne);
-
         JLabel jLabelTwo = new JLabel(getFieldNameTwoCapitalized() + ":");
         jLabelTwo.setBounds(10, 70, 100, 30);
         add(jLabelTwo);
         jTextFieldTwo = new JTextField();
         jTextFieldTwo.setBounds(110, 70, 200, 30);
         add(jTextFieldTwo);
-
         JLabel jLabelThree = new JLabel(getFieldNameThreeCapitalized() + ":");
         jLabelThree.setBounds(10, 100, 100, 30);
         add(jLabelThree);
         jTextFieldThree = new JTextField();
         jTextFieldThree.setBounds(110, 100, 200, 30);
         add(jTextFieldThree);
-
         JButton jButtonSave = new JButton("Save");
         jButtonSave.setBounds(40, 130, 100, 30);
         jButtonSave.addActionListener(this::jButtonSaveActionPerformed);
         add(jButtonSave);
-
         JButton jButtonCancel = new JButton("Cancel");
         jButtonCancel.setBounds(160, 130, 100, 30);
         jButtonCancel.addActionListener(this::jButtonCancelActionPerformed);
         add(jButtonCancel);
-
         if (action.equals(ACTION_UPDATE)) {
             setJTextFieldsFromModel();
         }
@@ -100,7 +92,6 @@ public abstract class GenericFormView<T> extends JFrame {
         if (validateFields()) {
             if (action.equals(ACTION_CREATE)) {
                 T newModel = instantiateModelFromJTextFields();
-
                 if (dao.create(newModel) == 1) {
                     showMessageDialog(
                             this,
@@ -112,7 +103,6 @@ public abstract class GenericFormView<T> extends JFrame {
                 }
             } else if (action.equals(ACTION_UPDATE)) {
                 setModelFromJTextFields();
-
                 if (dao.update(t) == 1) {
                     showMessageDialog(
                             this,
@@ -144,7 +134,6 @@ public abstract class GenericFormView<T> extends JFrame {
     protected boolean validateStringField(JTextField jTextField, String fieldName) {
         if (jTextField == null || jTextField.getText().isEmpty() || jTextField.getText().trim().isEmpty()) {
             showErrorMessageDialog(fieldName);
-
             return false;
         }
         return true;
@@ -153,11 +142,9 @@ public abstract class GenericFormView<T> extends JFrame {
     protected boolean validateIntegerField(JTextField jTextField, String fieldName) {
         try {
             Integer.parseInt(jTextField.getText());
-
             return true;
         } catch (NumberFormatException e) {
             showErrorMessageDialog(fieldName);
-
             return false;
         }
     }
@@ -165,11 +152,9 @@ public abstract class GenericFormView<T> extends JFrame {
     protected boolean validateDoubleField(JTextField jTextField, String fieldName) {
         try {
             Double.parseDouble(jTextField.getText());
-
             return true;
         } catch (NumberFormatException e) {
             showErrorMessageDialog(fieldName);
-
             return false;
         }
     }

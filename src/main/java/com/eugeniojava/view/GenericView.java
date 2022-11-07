@@ -32,7 +32,6 @@ public abstract class GenericView<T> extends JFrame {
         setLayout(null);
         setLocationRelativeTo(parent);
         setResizable(false);
-
         dialogMessageErrorUnselected = "Please select a(n) " + getModelNameUncapitalized() + " from the list before " +
                 "doing this.";
         viewTitle = getModelNameCapitalized() + " management";
@@ -41,9 +40,7 @@ public abstract class GenericView<T> extends JFrame {
         modelDefaultListModel = new DefaultListModel<>();
         modelList = new ArrayList<>();
         initComponents();
-
         loadFromDatabase();
-
         setVisible(true);
     }
 
@@ -61,7 +58,6 @@ public abstract class GenericView<T> extends JFrame {
         JLabel jLabelTitle = new JLabel(viewTitle);
         jLabelTitle.setBounds(80, 10, 200, 30);
         add(jLabelTitle);
-
         JLabel jLabelFilterByName = new JLabel("Filter by name: ");
         jLabelFilterByName.setBounds(10, 40, 100, 30);
         jTextFieldName = new JTextField();
@@ -72,41 +68,33 @@ public abstract class GenericView<T> extends JFrame {
         add(jLabelFilterByName);
         add(jTextFieldName);
         add(jButtonFilter);
-
         JButton jButtonCreateModel = new JButton("Create " + getModelNameUncapitalized());
         jButtonCreateModel.setBounds(80, 70, 150, 30);
         jButtonCreateModel.addActionListener(this::jButtonCreateModelActionPerformed);
         add(jButtonCreateModel);
-
         JButton jButtonUpdateModel = new JButton("Update " + getModelNameUncapitalized());
         jButtonUpdateModel.setBounds(80, 100, 150, 30);
         jButtonUpdateModel.addActionListener(this::jButtonUpdateModelActionPerformed);
         add(jButtonUpdateModel);
-
         JButton jButtonDeleteModel = new JButton("Delete " + getModelNameUncapitalized());
         jButtonDeleteModel.setBounds(80, 130, 150, 30);
         jButtonDeleteModel.addActionListener(this::jButtonDeleteModelActionPerformed);
         add(jButtonDeleteModel);
-
         jListModel = new JList<>(modelDefaultListModel);
         jListModel.setBounds(10, 180, 300, 300);
         add(jListModel);
-
         JButton jButtonClearFilter = new JButton("Clear filter");
         jButtonClearFilter.setBounds(100, 500, 120, 30);
         jButtonClearFilter.addActionListener(this::jButtonClearFilterActionPerformed);
         add(jButtonClearFilter);
-
         JButton jButtonSaveChanges = new JButton("Save changes");
         jButtonSaveChanges.setBounds(90, 540, 140, 30);
         jButtonSaveChanges.addActionListener(this::jButtonSaveChangesActionPerformed);
         add(jButtonSaveChanges);
-
         JButton jButtonDiscardChanges = new JButton("Discard changes");
         jButtonDiscardChanges.setBounds(90, 580, 140, 30);
         jButtonDiscardChanges.addActionListener(this::jButtonDiscardChangesActionPerformed);
         add(jButtonDiscardChanges);
-
         JButton jButtonClose = new JButton("Close");
         jButtonClose.setBounds(110, 620, 100, 30);
         jButtonClose.addActionListener(this::jButtonCloseActionPerformed);
@@ -115,10 +103,8 @@ public abstract class GenericView<T> extends JFrame {
 
     protected void jButtonFilterActionPerformed(ActionEvent actionEvent) {
         String name = jTextFieldName.getText();
-
         if (!name.isEmpty()) {
             List<T> list = dao.findByName(name);
-
             if (!list.isEmpty()) {
                 modelDefaultListModel.clear();
                 modelList = list;
@@ -147,7 +133,6 @@ public abstract class GenericView<T> extends JFrame {
 
     protected void jButtonUpdateModelActionPerformed(ActionEvent actionActionEvent) {
         T selectedModel = jListModel.getSelectedValue();
-
         if (selectedModel != null) {
             instantiateFormViewToUpdate(selectedModel);
         } else {
@@ -163,7 +148,6 @@ public abstract class GenericView<T> extends JFrame {
 
     protected void jButtonDeleteModelActionPerformed(ActionEvent actionActionEvent) {
         T selectedModel = jListModel.getSelectedValue();
-
         if (selectedModel != null) {
             if (dao.delete(getIdFromModel(selectedModel)) == 1) {
                 showMessageDialog(

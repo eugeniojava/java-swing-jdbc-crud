@@ -37,7 +37,6 @@ public abstract class GenericDao<T> {
     protected T getObjectIfFound(ResultSet resultSet) {
         T t = null;
         boolean check = false;
-
         try {
             while (resultSet.next()) {
                 check = true;
@@ -46,7 +45,6 @@ public abstract class GenericDao<T> {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return check ? t : null;
     }
 
@@ -59,15 +57,12 @@ public abstract class GenericDao<T> {
         try (PreparedStatement preparedStatement = getPreparedStatement(query)) {
             ResultSet resultSet = preparedStatement.executeQuery();
             List<T> list = new ArrayList<>();
-
             while (resultSet.next()) {
                 list.add(instantiateAndSetAllFields(resultSet));
             }
-
             return list;
         } catch (SQLException e) {
             e.printStackTrace();
-
             return emptyList();
         }
     }
@@ -78,43 +73,34 @@ public abstract class GenericDao<T> {
             preparedStatement.setString(1, "%" + name + "%");
             ResultSet resultSet = preparedStatement.executeQuery();
             List<T> list = new ArrayList<>();
-
             while (resultSet.next()) {
                 list.add(instantiateAndSetAllFields(resultSet));
             }
-
             return list;
         } catch (SQLException e) {
             e.printStackTrace();
-
             return emptyList();
         }
     }
 
     public T findLast() {
         String query = "SELECT * FROM " + getTableName() + " WHERE id = (SELECT MAX(id) FROM " + getTableName() + ")";
-
         try (PreparedStatement preparedStatement = getPreparedStatement(query)) {
             ResultSet resultSet = preparedStatement.executeQuery();
-
             return getObjectIfFound(resultSet);
         } catch (SQLException e) {
             e.printStackTrace();
-
             return null;
         }
     }
 
     public int create(T t) {
         String query = "INSERT INTO " + getTableName() + "(" + getColumnNamesCommaSeparated() + ") VALUES (?, ?, ?)";
-
         try (PreparedStatement preparedStatement = getPreparedStatement(query)) {
             PreparedStatement returnedPreparedStatement = setColumnValuesInOrderExceptId(t, preparedStatement);
-
             return returnedPreparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
-
             return -1;
         }
     }
@@ -123,28 +109,22 @@ public abstract class GenericDao<T> {
         String query = "UPDATE " + getTableName() + " SET "
                 + getColumnNamesWithInterpolationMarkAssignedEachExceptIdCommaSeparated()
                 + " WHERE id = ?";
-
         try (PreparedStatement preparedStatement = getPreparedStatement(query)) {
             PreparedStatement returnedPreparedStatement = setColumnValuesInOrder(t, preparedStatement);
-
             return returnedPreparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
-
             return -1;
         }
     }
 
     public int delete(int id) {
         String query = "DELETE FROM " + getTableName() + " WHERE id = ?";
-
         try (PreparedStatement preparedStatement = getPreparedStatement(query)) {
             preparedStatement.setInt(1, id);
-
             return preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
-
             return -1;
         }
     }
@@ -152,17 +132,14 @@ public abstract class GenericDao<T> {
     public boolean commitChangesIfTrueElseRollback(boolean flag) {
         try {
             Connection connection = databaseConnection.getConnection();
-
             if (flag) {
                 connection.commit();
             } else {
                 connection.rollback();
             }
-
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
-
             return false;
         }
     }

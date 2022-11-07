@@ -20,17 +20,14 @@ public class EmployeeDaoImpl extends GenericDao<Employee> {
     @Override
     protected Employee instantiateAndSetAllFields(ResultSet resultSet) {
         Employee employee = new Employee();
-
         try {
             employee.setId(resultSet.getInt("id"));
             employee.setName(resultSet.getString("name"));
             employee.setAge(resultSet.getInt("age"));
             employee.setRole(resultSet.getString("role"));
-
             return employee;
         } catch (SQLException e) {
             e.printStackTrace();
-
             return null;
         }
     }
@@ -41,11 +38,9 @@ public class EmployeeDaoImpl extends GenericDao<Employee> {
             preparedStatement.setString(1, employee.getName());
             preparedStatement.setInt(2, employee.getAge());
             preparedStatement.setString(3, employee.getRole());
-
             return preparedStatement;
         } catch (SQLException e) {
             e.printStackTrace();
-
             return null;
         }
     }
@@ -55,11 +50,9 @@ public class EmployeeDaoImpl extends GenericDao<Employee> {
         setColumnValuesInOrderExceptId(employee, preparedStatement);
         try {
             preparedStatement.setInt(4, employee.getId());
-
             return preparedStatement;
         } catch (SQLException e) {
             e.printStackTrace();
-
             return null;
         }
     }

@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class DatabaseConnection {
-
     private static DatabaseConnection instance;
     private static String url;
     private static String username;
@@ -18,7 +17,6 @@ public class DatabaseConnection {
         Properties properties = new Properties();
         try {
             properties.load(new FileInputStream("src/main/resources/config.properties"));
-
             url = properties.getProperty("database.url");
             username = properties.getProperty("database.username");
             password = properties.getProperty("database.password");

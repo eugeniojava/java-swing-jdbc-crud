@@ -18,9 +18,7 @@ public class MainView extends JFrame {
         setLayout(null);
         setLocationRelativeTo(null);
         setResizable(false);
-
         initComponents();
-
         setVisible(true);
     }
 
@@ -28,7 +26,6 @@ public class MainView extends JFrame {
         JLabel jLabelTitle = new JLabel(TITLE);
         jLabelTitle.setBounds(120, 10, 200, 30);
         add(jLabelTitle);
-
         JLabel jLabelCustomers = new JLabel("Customers");
         jLabelCustomers.setBounds(10, 40, 100, 30);
         add(jLabelCustomers);
@@ -36,7 +33,6 @@ public class MainView extends JFrame {
         jButtonManageCustomers.setBounds(110, 40, 200, 30);
         jButtonManageCustomers.addActionListener(this::jButtonManageCustomers);
         add(jButtonManageCustomers);
-
         JLabel jLabelEmployees = new JLabel("Employees");
         jLabelEmployees.setBounds(10, 70, 100, 30);
         add(jLabelEmployees);
@@ -44,7 +40,6 @@ public class MainView extends JFrame {
         jButtonManageEmployees.setBounds(110, 70, 200, 30);
         jButtonManageEmployees.addActionListener(this::jButtonManageEmployees);
         add(jButtonManageEmployees);
-
         JLabel jLabelProducts = new JLabel("Products");
         jLabelProducts.setBounds(10, 100, 100, 30);
         add(jLabelProducts);
@@ -52,7 +47,6 @@ public class MainView extends JFrame {
         jButtonManageProducts.setBounds(110, 100, 200, 30);
         jButtonManageProducts.addActionListener(this::jButtonManageProducts);
         add(jButtonManageProducts);
-
         JButton jButtonClose = new JButton("Close");
         jButtonClose.setBounds(150, 130, 100, 30);
         jButtonClose.addActionListener(this::jButtonCloseActionPerformed);

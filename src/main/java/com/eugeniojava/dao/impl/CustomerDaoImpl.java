@@ -20,17 +20,14 @@ public class CustomerDaoImpl extends GenericDao<Customer> {
     @Override
     protected Customer instantiateAndSetAllFields(ResultSet resultSet) {
         Customer customer = new Customer();
-
         try {
             customer.setId(resultSet.getInt("id"));
             customer.setName(resultSet.getString("name"));
             customer.setAge(resultSet.getInt("age"));
             customer.setSegment(resultSet.getString("segment"));
-
             return customer;
         } catch (SQLException e) {
             e.printStackTrace();
-
             return null;
         }
     }
@@ -41,11 +38,9 @@ public class CustomerDaoImpl extends GenericDao<Customer> {
             preparedStatement.setString(1, customer.getName());
             preparedStatement.setInt(2, customer.getAge());
             preparedStatement.setString(3, customer.getSegment());
-
             return preparedStatement;
         } catch (SQLException e) {
             e.printStackTrace();
-
             return null;
         }
     }
@@ -55,11 +50,9 @@ public class CustomerDaoImpl extends GenericDao<Customer> {
         setColumnValuesInOrderExceptId(customer, preparedStatement);
         try {
             preparedStatement.setInt(4, customer.getId());
-
             return preparedStatement;
         } catch (SQLException e) {
             e.printStackTrace();
-
             return null;
         }
     }
