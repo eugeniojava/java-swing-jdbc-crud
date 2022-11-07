@@ -1,8 +1,8 @@
-package main.java.com.eugeniojava.view;
+package com.eugeniojava.javaswingjdbccrud.view;
 
-import main.java.com.eugeniojava.dao.impl.CustomerDaoImpl;
-import main.java.com.eugeniojava.dao.impl.EmployeeDaoImpl;
-import main.java.com.eugeniojava.dao.impl.ProductDaoImpl;
+import com.eugeniojava.javaswingjdbccrud.dao.impl.EmployeeDaoImpl;
+import com.eugeniojava.javaswingjdbccrud.dao.impl.ProductDaoImpl;
+import com.eugeniojava.javaswingjdbccrud.dao.impl.CustomerDaoImpl;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;

@@ -1,4 +1,4 @@
-package main.java.com.eugeniojava.model;
+package com.eugeniojava.javaswingjdbccrud.model;
 
 public class Product {
     private int id;

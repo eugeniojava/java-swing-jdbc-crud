@@ -1,18 +1,18 @@
-package main.java.com.eugeniojava.model;
+package com.eugeniojava.javaswingjdbccrud.model;
 
-public class Customer {
+public class Employee {
     private int id;
     private String name;
     private int age;
-    private String segment;
+    private String role;
 
-    public Customer() {
+    public Employee() {
     }
 
-    public Customer(String name, int age, String segment) {
+    public Employee(String name, int age, String role) {
         this.name = name;
         this.age = age;
-        this.segment = segment;
+        this.role = role;
     }
 
     public int getId() {
@@ -39,16 +39,16 @@ public class Customer {
         this.age = age;
     }
 
-    public String getSegment() {
-        return segment;
+    public String getRole() {
+        return role;
     }
 
-    public void setSegment(String segment) {
-        this.segment = segment;
+    public void setRole(String role) {
+        this.role = role;
     }
 
     @Override
     public String toString() {
-        return "Id: " + id + " | Name: " + name + " | Age: " + age + " | Segment: " + segment;
+        return "Id: " + id + " | Name: " + name + " | Age: " + age + " | Role: " + role;
     }
 }

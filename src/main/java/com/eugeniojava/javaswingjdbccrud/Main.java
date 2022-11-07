@@ -1,6 +1,6 @@
-package main.java.com.eugeniojava;
+package com.eugeniojava.javaswingjdbccrud;
 
-import main.java.com.eugeniojava.view.MainView;
+import com.eugeniojava.javaswingjdbccrud.view.MainView;
 
 public class Main {
     public static void main(String[] args) {

@@ -1,7 +1,7 @@
-package main.java.com.eugeniojava.view;
+package com.eugeniojava.javaswingjdbccrud.view;
 
-import main.java.com.eugeniojava.dao.GenericDao;
-import main.java.com.eugeniojava.model.Employee;
+import com.eugeniojava.javaswingjdbccrud.dao.GenericDao;
+import com.eugeniojava.javaswingjdbccrud.model.Employee;
 import javax.swing.JFrame;
 
 public class EmployeeFormView extends GenericFormView<Employee> {

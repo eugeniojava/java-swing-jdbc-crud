@@ -1,7 +1,7 @@
-package main.java.com.eugeniojava.view;
+package com.eugeniojava.javaswingjdbccrud.view;
 
-import main.java.com.eugeniojava.dao.GenericDao;
-import main.java.com.eugeniojava.model.Product;
+import com.eugeniojava.javaswingjdbccrud.model.Product;
+import com.eugeniojava.javaswingjdbccrud.dao.GenericDao;
 import javax.swing.JFrame;
 
 public class ProductView extends GenericView<Product> {
