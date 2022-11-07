@@ -1,11 +1,11 @@
 package com.eugeniojava.javaswingjdbccrud.view;
 
-import com.eugeniojava.javaswingjdbccrud.dao.GenericDao;
+import com.eugeniojava.javaswingjdbccrud.dao.AbstractDao;
 import com.eugeniojava.javaswingjdbccrud.model.Employee;
 import javax.swing.JFrame;
 
-public class EmployeeFormView extends GenericFormView<Employee> {
-    public EmployeeFormView(JFrame parent, GenericDao<Employee> dao, GenericView<Employee> view, String action,
+public class EmployeeFormView extends AbstractFormView<Employee> {
+    public EmployeeFormView(JFrame parent, AbstractDao<Employee> dao, AbstractView<Employee> view, String action,
                             Employee employee) {
         super(parent, dao, view, action, employee);
     }

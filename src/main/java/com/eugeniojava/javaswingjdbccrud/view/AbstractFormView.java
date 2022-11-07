@@ -1,6 +1,6 @@
 package com.eugeniojava.javaswingjdbccrud.view;
 
-import com.eugeniojava.javaswingjdbccrud.dao.GenericDao;
+import com.eugeniojava.javaswingjdbccrud.dao.AbstractDao;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -11,19 +11,19 @@ import static javax.swing.JOptionPane.ERROR_MESSAGE;
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 import static javax.swing.JOptionPane.showMessageDialog;
 
-public abstract class GenericFormView<T> extends JFrame {
+public abstract class AbstractFormView<T> extends JFrame {
     public static final String ACTION_CREATE = "Create";
     public static final String ACTION_UPDATE = "Update";
     protected final String action;
     protected final String viewTitle;
-    protected final GenericDao<T> dao;
-    protected final GenericView<T> view;
+    protected final AbstractDao<T> dao;
+    protected final AbstractView<T> view;
     protected T t;
     protected JTextField jTextFieldOne;
     protected JTextField jTextFieldTwo;
     protected JTextField jTextFieldThree;
 
-    protected GenericFormView(JFrame parent, GenericDao<T> dao, GenericView<T> view, String action, T t) {
+    protected AbstractFormView(JFrame parent, AbstractDao<T> dao, AbstractView<T> view, String action, T t) {
         setSize(350, 200);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLayout(null);
@@ -96,7 +96,7 @@ public abstract class GenericFormView<T> extends JFrame {
                     showMessageDialog(
                             this,
                             getModelNameCapitalized() + " successfully created.",
-                            GenericView.DIALOG_TITLE_SUCCESS,
+                            AbstractView.DIALOG_TITLE_SUCCESS,
                             INFORMATION_MESSAGE);
                     dispose();
                     view.loadFromDatabase();
@@ -107,7 +107,7 @@ public abstract class GenericFormView<T> extends JFrame {
                     showMessageDialog(
                             this,
                             getModelNameCapitalized() + " successfully updated.",
-                            GenericView.DIALOG_TITLE_SUCCESS,
+                            AbstractView.DIALOG_TITLE_SUCCESS,
                             INFORMATION_MESSAGE);
                     dispose();
                     view.loadFromDatabase();
@@ -116,7 +116,7 @@ public abstract class GenericFormView<T> extends JFrame {
                 showMessageDialog(
                         this,
                         "Error on creating or updating " + getModelNameUncapitalized() + ".",
-                        GenericView.DIALOG_TITLE_ERROR,
+                        AbstractView.DIALOG_TITLE_ERROR,
                         ERROR_MESSAGE);
                 dispose();
             }
@@ -163,7 +163,7 @@ public abstract class GenericFormView<T> extends JFrame {
         showMessageDialog(
                 this,
                 "Field " + fieldName + " is invalid.",
-                GenericView.DIALOG_TITLE_ERROR,
+                AbstractView.DIALOG_TITLE_ERROR,
                 ERROR_MESSAGE);
     }
 }

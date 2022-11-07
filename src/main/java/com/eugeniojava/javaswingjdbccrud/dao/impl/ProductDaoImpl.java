@@ -1,24 +1,24 @@
 package com.eugeniojava.javaswingjdbccrud.dao.impl;
 
-import com.eugeniojava.javaswingjdbccrud.dao.GenericDao;
+import com.eugeniojava.javaswingjdbccrud.dao.AbstractDao;
 import com.eugeniojava.javaswingjdbccrud.model.Product;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class ProductDaoImpl extends GenericDao<Product> {
+public class ProductDaoImpl extends AbstractDao<Product> {
     @Override
-    protected String getTableName() {
+    public String getTableName() {
         return "products";
     }
 
     @Override
-    protected String getColumnNamesCommaSeparated() {
+    public String getColumnNamesCommaSeparated() {
         return "name, price, quantity";
     }
 
     @Override
-    protected Product instantiateAndSetAllFields(ResultSet resultSet) {
+    public Product instantiateAndSetAllFields(ResultSet resultSet) {
         Product customer = new Product();
         try {
             customer.setId(resultSet.getInt("id"));
@@ -33,7 +33,7 @@ public class ProductDaoImpl extends GenericDao<Product> {
     }
 
     @Override
-    protected PreparedStatement setColumnValuesInOrderExceptId(Product product, PreparedStatement preparedStatement) {
+    public PreparedStatement setColumnValuesInOrderExceptId(Product product, PreparedStatement preparedStatement) {
         try {
             preparedStatement.setString(1, product.getName());
             preparedStatement.setDouble(2, product.getPrice());
@@ -46,7 +46,7 @@ public class ProductDaoImpl extends GenericDao<Product> {
     }
 
     @Override
-    protected PreparedStatement setColumnValuesInOrder(Product product, PreparedStatement preparedStatement) {
+    public PreparedStatement setColumnValuesInOrder(Product product, PreparedStatement preparedStatement) {
         setColumnValuesInOrderExceptId(product, preparedStatement);
         try {
             preparedStatement.setInt(4, product.getId());
@@ -58,7 +58,7 @@ public class ProductDaoImpl extends GenericDao<Product> {
     }
 
     @Override
-    protected String getColumnNamesWithInterpolationMarkAssignedEachExceptIdCommaSeparated() {
+    public String getColumnNamesWithInterpolationMarkAssignedEachExceptIdCommaSeparated() {
         return "name = ?, price = ?, quantity = ?";
     }
 }

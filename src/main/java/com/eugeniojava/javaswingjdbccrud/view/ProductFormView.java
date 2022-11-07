@@ -1,11 +1,11 @@
 package com.eugeniojava.javaswingjdbccrud.view;
 
-import com.eugeniojava.javaswingjdbccrud.dao.GenericDao;
+import com.eugeniojava.javaswingjdbccrud.dao.AbstractDao;
 import com.eugeniojava.javaswingjdbccrud.model.Product;
 import javax.swing.JFrame;
 
-public class ProductFormView extends GenericFormView<Product> {
-    public ProductFormView(JFrame parent, GenericDao<Product> dao, GenericView<Product> view, String action,
+public class ProductFormView extends AbstractFormView<Product> {
+    public ProductFormView(JFrame parent, AbstractDao<Product> dao, AbstractView<Product> view, String action,
                            Product product) {
         super(parent, dao, view, action, product);
     }

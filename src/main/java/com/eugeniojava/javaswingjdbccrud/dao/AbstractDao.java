@@ -10,7 +10,7 @@ import java.util.List;
 
 import static java.util.Collections.emptyList;
 
-public abstract class GenericDao<T> {
+public abstract class AbstractDao<T> implements Dao<T> {
     protected static DatabaseConnection databaseConnection;
 
     static {
@@ -21,18 +21,6 @@ public abstract class GenericDao<T> {
             e.printStackTrace();
         }
     }
-
-    protected abstract String getTableName();
-
-    protected abstract String getColumnNamesCommaSeparated();
-
-    protected abstract T instantiateAndSetAllFields(ResultSet resultSet);
-
-    protected abstract PreparedStatement setColumnValuesInOrderExceptId(T t, PreparedStatement preparedStatement);
-
-    protected abstract PreparedStatement setColumnValuesInOrder(T t, PreparedStatement preparedStatement);
-
-    protected abstract String getColumnNamesWithInterpolationMarkAssignedEachExceptIdCommaSeparated();
 
     protected T getObjectIfFound(ResultSet resultSet) {
         T t = null;

@@ -1,6 +1,6 @@
 package com.eugeniojava.javaswingjdbccrud.view;
 
-import com.eugeniojava.javaswingjdbccrud.dao.GenericDao;
+import com.eugeniojava.javaswingjdbccrud.dao.AbstractDao;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -15,18 +15,18 @@ import static javax.swing.JOptionPane.ERROR_MESSAGE;
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 import static javax.swing.JOptionPane.showMessageDialog;
 
-public abstract class GenericView<T> extends JFrame {
+public abstract class AbstractView<T> extends JFrame {
     public static final String DIALOG_TITLE_SUCCESS = "Success";
     public static final String DIALOG_TITLE_ERROR = "Error";
     protected final String dialogMessageErrorUnselected;
     protected final String viewTitle;
-    protected final GenericDao<T> dao;
+    protected final AbstractDao<T> dao;
     protected final DefaultListModel<T> modelDefaultListModel;
     protected List<T> modelList;
     protected JList<T> jListModel;
     protected JTextField jTextFieldName;
 
-    protected GenericView(JFrame parent, GenericDao<T> dao) {
+    protected AbstractView(JFrame parent, AbstractDao<T> dao) {
         setSize(320, 720);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLayout(null);

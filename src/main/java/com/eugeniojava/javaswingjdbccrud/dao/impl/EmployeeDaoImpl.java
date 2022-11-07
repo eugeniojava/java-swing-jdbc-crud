@@ -1,24 +1,24 @@
 package com.eugeniojava.javaswingjdbccrud.dao.impl;
 
-import com.eugeniojava.javaswingjdbccrud.dao.GenericDao;
+import com.eugeniojava.javaswingjdbccrud.dao.AbstractDao;
 import com.eugeniojava.javaswingjdbccrud.model.Employee;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class EmployeeDaoImpl extends GenericDao<Employee> {
+public class EmployeeDaoImpl extends AbstractDao<Employee> {
     @Override
-    protected String getTableName() {
+    public String getTableName() {
         return "employees";
     }
 
     @Override
-    protected String getColumnNamesCommaSeparated() {
+    public String getColumnNamesCommaSeparated() {
         return "name, age, role";
     }
 
     @Override
-    protected Employee instantiateAndSetAllFields(ResultSet resultSet) {
+    public Employee instantiateAndSetAllFields(ResultSet resultSet) {
         Employee employee = new Employee();
         try {
             employee.setId(resultSet.getInt("id"));
@@ -33,7 +33,7 @@ public class EmployeeDaoImpl extends GenericDao<Employee> {
     }
 
     @Override
-    protected PreparedStatement setColumnValuesInOrderExceptId(Employee employee, PreparedStatement preparedStatement) {
+    public PreparedStatement setColumnValuesInOrderExceptId(Employee employee, PreparedStatement preparedStatement) {
         try {
             preparedStatement.setString(1, employee.getName());
             preparedStatement.setInt(2, employee.getAge());
@@ -46,7 +46,7 @@ public class EmployeeDaoImpl extends GenericDao<Employee> {
     }
 
     @Override
-    protected PreparedStatement setColumnValuesInOrder(Employee employee, PreparedStatement preparedStatement) {
+    public PreparedStatement setColumnValuesInOrder(Employee employee, PreparedStatement preparedStatement) {
         setColumnValuesInOrderExceptId(employee, preparedStatement);
         try {
             preparedStatement.setInt(4, employee.getId());
@@ -58,7 +58,7 @@ public class EmployeeDaoImpl extends GenericDao<Employee> {
     }
 
     @Override
-    protected String getColumnNamesWithInterpolationMarkAssignedEachExceptIdCommaSeparated() {
+    public String getColumnNamesWithInterpolationMarkAssignedEachExceptIdCommaSeparated() {
         return "name = ?, age = ?, role = ?";
     }
 }
